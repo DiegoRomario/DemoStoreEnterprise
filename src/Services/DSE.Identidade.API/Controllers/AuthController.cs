@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace DSE.Identidade.API.Controllers
 {
+    [ApiController]
     [Route("api/identidade")]
     public class AuthController : Controller
     {
@@ -39,7 +40,7 @@ namespace DSE.Identidade.API.Controllers
 
             return BadRequest();
         }
-
+        [HttpPost("autenticar")]
         public async Task<ActionResult> Login(UsuarioLogin usuarioLogin)
         {
             if (!ModelState.IsValid) return BadRequest();
