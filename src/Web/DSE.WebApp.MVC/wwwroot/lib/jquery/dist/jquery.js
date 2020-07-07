@@ -6,8 +6,8 @@
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
- * Released under the MIT license
- * https://jquery.org/license
+ * Released under the MIT liceDSE
+ * https://jquery.org/liceDSE
  *
  * Date: 2018-01-20T17:24Z
  */
@@ -502,8 +502,8 @@ var Sizzle =
  * https://sizzlejs.com/
  *
  * Copyright jQuery Foundation and other contributors
- * Released under the MIT license
- * http://jquery.org/license
+ * Released under the MIT liceDSE
+ * http://jquery.org/liceDSE
  *
  * Date: 2016-08-08
  */
@@ -1879,7 +1879,7 @@ Expr = Sizzle.selectors = {
 		},
 
 		"PSEUDO": function( pseudo, argument ) {
-			// pseudo-class names are case-insensitive
+			// pseudo-class names are case-iDSEnsitive
 			// http://www.w3.org/TR/selectors/#pseudo-classes
 			// Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
 			// Remember that setFilters inherits from pseudos
@@ -1965,7 +1965,7 @@ Expr = Sizzle.selectors = {
 		// is based solely on the element's language value
 		// being equal to the identifier C,
 		// or beginning with the identifier C immediately followed by "-".
-		// The matching of C against the element's language value is performed case-insensitively.
+		// The matching of C against the element's language value is performed case-iDSEnsitively.
 		// The identifier C does not have to be a valid language name."
 		// http://www.w3.org/TR/selectors/#lang-pseudo
 		"lang": markFunction( function( lang ) {
@@ -2292,7 +2292,7 @@ function multipleContexts( selector, contexts, results ) {
 	return results;
 }
 
-function condense( unmatched, map, filter, context, xml ) {
+function condeDSE( unmatched, map, filter, context, xml ) {
 	var elem,
 		newUnmatched = [],
 		i = 0,
@@ -2331,7 +2331,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 
 			// Prefilter to get matcher input, preserving a map for seed-results synchronization
 			matcherIn = preFilter && ( seed || !selector ) ?
-				condense( elems, preMap, preFilter, context, xml ) :
+				condeDSE( elems, preMap, preFilter, context, xml ) :
 				elems,
 
 			matcherOut = matcher ?
@@ -2352,7 +2352,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 
 		// Apply postFilter
 		if ( postFilter ) {
-			temp = condense( matcherOut, postMap );
+			temp = condeDSE( matcherOut, postMap );
 			postFilter( temp, [], context, xml );
 
 			// Un-match failing elements by moving them back to matcherIn
@@ -2392,7 +2392,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 
 		// Add elements to results, through postFinder if defined
 		} else {
-			matcherOut = condense(
+			matcherOut = condeDSE(
 				matcherOut === results ?
 					matcherOut.splice( preexisting, matcherOut.length ) :
 					matcherOut
@@ -2448,7 +2448,7 @@ function matcherFromTokens( tokens ) {
 				return setMatcher(
 					i > 1 && elementMatcher( matchers ),
 					i > 1 && toSelector(
-						// If the preceding token was a descendant combinator, insert an implicit any-element `*`
+						// If the preceding token was a descendant combinator, iDSErt an implicit any-element `*`
 						tokens.slice( 0, i - 1 ).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
 					).replace( rtrim, "$1" ),
 					matcher,
@@ -2547,7 +2547,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 					}
 
 					// Discard index placeholder values to get only actual matches
-					setMatched = condense( setMatched );
+					setMatched = condeDSE( setMatched );
 				}
 
 				// Add matches to results
@@ -4489,7 +4489,7 @@ var swap = function( elem, options, callback, args ) {
 	var ret, name,
 		old = {};
 
-	// Remember the old values, and insert the new ones
+	// Remember the old values, and iDSErt the new ones
 	for ( name in options ) {
 		old[ name ] = elem.style[ name ];
 		elem.style[ name ] = options[ name ];
@@ -4681,7 +4681,7 @@ var wrapMap = {
 	// Support: IE <=9 only
 	option: [ 1, "<select multiple='multiple'>", "</select>" ],
 
-	// XHTML parsers do not magically insert elements in the
+	// XHTML parsers do not magically iDSErt elements in the
 	// same way that tag soup parsers do. So we cannot shorten
 	// this by omitting <tbody> or other required elements.
 	thead: [ 1, "<table>", "</table>" ],
@@ -5745,7 +5745,7 @@ function domManip( collection, args, callback, ignored ) {
 				// Reenable scripts
 				jQuery.map( scripts, restoreScript );
 
-				// Evaluate executable scripts on first document insertion
+				// Evaluate executable scripts on first document iDSErtion
 				for ( i = 0; i < hasScripts; i++ ) {
 					node = scripts[ i ];
 					if ( rscriptType.test( node.type || "" ) &&
@@ -5907,7 +5907,7 @@ jQuery.fn.extend( {
 		return domManip( this, arguments, function( elem ) {
 			if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
 				var target = manipulationTarget( this, elem );
-				target.insertBefore( elem, target.firstChild );
+				target.iDSErtBefore( elem, target.firstChild );
 			}
 		} );
 	},
@@ -5915,7 +5915,7 @@ jQuery.fn.extend( {
 	before: function() {
 		return domManip( this, arguments, function( elem ) {
 			if ( this.parentNode ) {
-				this.parentNode.insertBefore( elem, this );
+				this.parentNode.iDSErtBefore( elem, this );
 			}
 		} );
 	},
@@ -5923,7 +5923,7 @@ jQuery.fn.extend( {
 	after: function() {
 		return domManip( this, arguments, function( elem ) {
 			if ( this.parentNode ) {
-				this.parentNode.insertBefore( elem, this.nextSibling );
+				this.parentNode.iDSErtBefore( elem, this.nextSibling );
 			}
 		} );
 	},
@@ -6016,20 +6016,20 @@ jQuery.fn.extend( {
 jQuery.each( {
 	appendTo: "append",
 	prependTo: "prepend",
-	insertBefore: "before",
-	insertAfter: "after",
+	iDSErtBefore: "before",
+	iDSErtAfter: "after",
 	replaceAll: "replaceWith"
 }, function( name, original ) {
 	jQuery.fn[ name ] = function( selector ) {
 		var elems,
 			ret = [],
-			insert = jQuery( selector ),
-			last = insert.length - 1,
+			iDSErt = jQuery( selector ),
+			last = iDSErt.length - 1,
 			i = 0;
 
 		for ( ; i <= last; i++ ) {
 			elems = i === last ? this : this.clone( true );
-			jQuery( insert[ i ] )[ original ]( elems );
+			jQuery( iDSErt[ i ] )[ original ]( elems );
 
 			// Support: Android <=4.0 only, PhantomJS 1 only
 			// .get() because push.apply(_, arraylike) throws on ancient WebKit
@@ -8097,7 +8097,7 @@ jQuery.extend( {
 			},
 
 			set: function( elem, value ) {
-				var optionSet, option,
+				var optioDSEt, option,
 					options = elem.options,
 					values = jQuery.makeArray( value ),
 					i = options.length;
@@ -8110,14 +8110,14 @@ jQuery.extend( {
 					if ( option.selected =
 						jQuery.inArray( jQuery.valHooks.option.get( option ), values ) > -1
 					) {
-						optionSet = true;
+						optioDSEt = true;
 					}
 
 					/* eslint-enable no-cond-assign */
 				}
 
 				// Force browsers to behave consistently when non-matching value is set
-				if ( !optionSet ) {
+				if ( !optioDSEt ) {
 					elem.selectedIndex = -1;
 				}
 				return values;
@@ -8642,11 +8642,11 @@ function ajaxExtend( target, src ) {
 	return target;
 }
 
-/* Handles responses to an ajax request:
+/* Handles respoDSEs to an ajax request:
  * - finds the right dataType (mediates between content-type and expected dataType)
- * - returns the corresponding response
+ * - returns the corresponding respoDSE
  */
-function ajaxHandleResponses( s, jqXHR, responses ) {
+function ajaxHandleRespoDSEs( s, jqXHR, respoDSEs ) {
 
 	var ct, type, finalDataType, firstDataType,
 		contents = s.contents,
@@ -8656,7 +8656,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
 		if ( ct === undefined ) {
-			ct = s.mimeType || jqXHR.getResponseHeader( "Content-Type" );
+			ct = s.mimeType || jqXHR.getRespoDSEHeader( "Content-Type" );
 		}
 	}
 
@@ -8670,13 +8670,13 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		}
 	}
 
-	// Check to see if we have a response for the expected dataType
-	if ( dataTypes[ 0 ] in responses ) {
+	// Check to see if we have a respoDSE for the expected dataType
+	if ( dataTypes[ 0 ] in respoDSEs ) {
 		finalDataType = dataTypes[ 0 ];
 	} else {
 
 		// Try convertible dataTypes
-		for ( type in responses ) {
+		for ( type in respoDSEs ) {
 			if ( !dataTypes[ 0 ] || s.converters[ type + " " + dataTypes[ 0 ] ] ) {
 				finalDataType = type;
 				break;
@@ -8692,19 +8692,19 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 
 	// If we found a dataType
 	// We add the dataType to the list if needed
-	// and return the corresponding response
+	// and return the corresponding respoDSE
 	if ( finalDataType ) {
 		if ( finalDataType !== dataTypes[ 0 ] ) {
 			dataTypes.unshift( finalDataType );
 		}
-		return responses[ finalDataType ];
+		return respoDSEs[ finalDataType ];
 	}
 }
 
-/* Chain conversions given the request and the original response
- * Also sets the responseXXX fields on the jqXHR instance
+/* Chain conversions given the request and the original respoDSE
+ * Also sets the respoDSEXXX fields on the jqXHR instance
  */
-function ajaxConvert( s, response, jqXHR, isSuccess ) {
+function ajaxConvert( s, respoDSE, jqXHR, isSuccess ) {
 	var conv2, current, conv, tmp, prev,
 		converters = {},
 
@@ -8723,13 +8723,13 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 	// Convert to each sequential dataType
 	while ( current ) {
 
-		if ( s.responseFields[ current ] ) {
-			jqXHR[ s.responseFields[ current ] ] = response;
+		if ( s.respoDSEFields[ current ] ) {
+			jqXHR[ s.respoDSEFields[ current ] ] = respoDSE;
 		}
 
 		// Apply the dataFilter if provided
 		if ( !prev && isSuccess && s.dataFilter ) {
-			response = s.dataFilter( response, s.dataType );
+			respoDSE = s.dataFilter( respoDSE, s.dataType );
 		}
 
 		prev = current;
@@ -8742,7 +8742,7 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 
 				current = prev;
 
-			// Convert response if prev dataType is non-auto and differs from current
+			// Convert respoDSE if prev dataType is non-auto and differs from current
 			} else if ( prev !== "*" && prev !== current ) {
 
 				// Seek a direct converter
@@ -8761,11 +8761,11 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 								converters[ "* " + tmp[ 0 ] ];
 							if ( conv ) {
 
-								// Condense equivalence converters
+								// CondeDSE equivalence converters
 								if ( conv === true ) {
 									conv = converters[ conv2 ];
 
-								// Otherwise, insert the intermediate dataType
+								// Otherwise, iDSErt the intermediate dataType
 								} else if ( converters[ conv2 ] !== true ) {
 									current = tmp[ 0 ];
 									dataTypes.unshift( tmp[ 1 ] );
@@ -8781,10 +8781,10 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 
 					// Unless errors are allowed to bubble, catch and return them
 					if ( conv && s.throws ) {
-						response = conv( response );
+						respoDSE = conv( respoDSE );
 					} else {
 						try {
-							response = conv( response );
+							respoDSE = conv( respoDSE );
 						} catch ( e ) {
 							return {
 								state: "parsererror",
@@ -8797,7 +8797,7 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 		}
 	}
 
-	return { state: "success", data: response };
+	return { state: "success", data: respoDSE };
 }
 
 jQuery.extend( {
@@ -8844,10 +8844,10 @@ jQuery.extend( {
 			json: /\bjson\b/
 		},
 
-		responseFields: {
-			xml: "responseXML",
-			text: "responseText",
-			json: "responseJSON"
+		respoDSEFields: {
+			xml: "respoDSEXML",
+			text: "respoDSEText",
+			json: "respoDSEJSON"
 		},
 
 		// Data converters
@@ -8910,9 +8910,9 @@ jQuery.extend( {
 			// URL without anti-cache param
 			cacheURL,
 
-			// Response headers
-			responseHeadersString,
-			responseHeaders,
+			// RespoDSE headers
+			respoDSEHeadersString,
+			respoDSEHeaders,
 
 			// timeout handle
 			timeoutTimer,
@@ -8963,23 +8963,23 @@ jQuery.extend( {
 				readyState: 0,
 
 				// Builds headers hashtable if needed
-				getResponseHeader: function( key ) {
+				getRespoDSEHeader: function( key ) {
 					var match;
 					if ( completed ) {
-						if ( !responseHeaders ) {
-							responseHeaders = {};
-							while ( ( match = rheaders.exec( responseHeadersString ) ) ) {
-								responseHeaders[ match[ 1 ].toLowerCase() ] = match[ 2 ];
+						if ( !respoDSEHeaders ) {
+							respoDSEHeaders = {};
+							while ( ( match = rheaders.exec( respoDSEHeadersString ) ) ) {
+								respoDSEHeaders[ match[ 1 ].toLowerCase() ] = match[ 2 ];
 							}
 						}
-						match = responseHeaders[ key.toLowerCase() ];
+						match = respoDSEHeaders[ key.toLowerCase() ];
 					}
 					return match == null ? null : match;
 				},
 
 				// Raw string
-				getAllResponseHeaders: function() {
-					return completed ? responseHeadersString : null;
+				getAllRespoDSEHeaders: function() {
+					return completed ? respoDSEHeadersString : null;
 				},
 
 				// Caches the header
@@ -8992,7 +8992,7 @@ jQuery.extend( {
 					return this;
 				},
 
-				// Overrides response content-type header
+				// Overrides respoDSE content-type header
 				overrideMimeType: function( type ) {
 					if ( completed == null ) {
 						s.mimeType = type;
@@ -9217,8 +9217,8 @@ jQuery.extend( {
 		}
 
 		// Callback for when everything is done
-		function done( status, nativeStatusText, responses, headers ) {
-			var isSuccess, success, error, response, modified,
+		function done( status, nativeStatusText, respoDSEs, headers ) {
+			var isSuccess, success, error, respoDSE, modified,
 				statusText = nativeStatusText;
 
 			// Ignore repeat invocations
@@ -9237,8 +9237,8 @@ jQuery.extend( {
 			// (no matter how long the jqXHR object will be used)
 			transport = undefined;
 
-			// Cache response headers
-			responseHeadersString = headers || "";
+			// Cache respoDSE headers
+			respoDSEHeadersString = headers || "";
 
 			// Set readyState
 			jqXHR.readyState = status > 0 ? 4 : 0;
@@ -9246,24 +9246,24 @@ jQuery.extend( {
 			// Determine if successful
 			isSuccess = status >= 200 && status < 300 || status === 304;
 
-			// Get response data
-			if ( responses ) {
-				response = ajaxHandleResponses( s, jqXHR, responses );
+			// Get respoDSE data
+			if ( respoDSEs ) {
+				respoDSE = ajaxHandleRespoDSEs( s, jqXHR, respoDSEs );
 			}
 
-			// Convert no matter what (that way responseXXX fields are always set)
-			response = ajaxConvert( s, response, jqXHR, isSuccess );
+			// Convert no matter what (that way respoDSEXXX fields are always set)
+			respoDSE = ajaxConvert( s, respoDSE, jqXHR, isSuccess );
 
 			// If successful, handle type chaining
 			if ( isSuccess ) {
 
 				// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
 				if ( s.ifModified ) {
-					modified = jqXHR.getResponseHeader( "Last-Modified" );
+					modified = jqXHR.getRespoDSEHeader( "Last-Modified" );
 					if ( modified ) {
 						jQuery.lastModified[ cacheURL ] = modified;
 					}
-					modified = jqXHR.getResponseHeader( "etag" );
+					modified = jqXHR.getRespoDSEHeader( "etag" );
 					if ( modified ) {
 						jQuery.etag[ cacheURL ] = modified;
 					}
@@ -9279,9 +9279,9 @@ jQuery.extend( {
 
 				// If we have data, let's convert it
 				} else {
-					statusText = response.state;
-					success = response.data;
-					error = response.error;
+					statusText = respoDSE.state;
+					success = respoDSE.data;
+					error = respoDSE.error;
 					isSuccess = !error;
 				}
 			} else {
@@ -9391,7 +9391,7 @@ jQuery.fn.extend( {
 			wrap = jQuery( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
 
 			if ( this[ 0 ].parentNode ) {
-				wrap.insertBefore( this[ 0 ] );
+				wrap.iDSErtBefore( this[ 0 ] );
 			}
 
 			wrap.map( function() {
@@ -9552,11 +9552,11 @@ jQuery.ajaxTransport( function( options ) {
 									// Support: IE <=9 only
 									// IE9 has no XHR2 but throws on binary (trac-11426)
 									// For XHR2 non-text, let the caller handle it (gh-2498)
-									( xhr.responseType || "text" ) !== "text"  ||
-									typeof xhr.responseText !== "string" ?
-										{ binary: xhr.response } :
-										{ text: xhr.responseText },
-									xhr.getAllResponseHeaders()
+									( xhr.respoDSEType || "text" ) !== "text"  ||
+									typeof xhr.respoDSEText !== "string" ?
+										{ binary: xhr.respoDSE } :
+										{ text: xhr.respoDSEText },
+									xhr.getAllRespoDSEHeaders()
 								);
 							}
 						}
@@ -9706,7 +9706,7 @@ jQuery.ajaxSetup( {
 // Detect, normalize options and install callbacks for jsonp requests
 jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
-	var callbackName, overwritten, responseContainer,
+	var callbackName, overwritten, respoDSEContainer,
 		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
 			"url" :
 			typeof s.data === "string" &&
@@ -9723,7 +9723,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			s.jsonpCallback() :
 			s.jsonpCallback;
 
-		// Insert callback into url or form data
+		// IDSErt callback into url or form data
 		if ( jsonProp ) {
 			s[ jsonProp ] = s[ jsonProp ].replace( rjsonp, "$1" + callbackName );
 		} else if ( s.jsonp !== false ) {
@@ -9732,10 +9732,10 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
 		// Use data converter to retrieve json after script execution
 		s.converters[ "script json" ] = function() {
-			if ( !responseContainer ) {
+			if ( !respoDSEContainer ) {
 				jQuery.error( callbackName + " was not called" );
 			}
-			return responseContainer[ 0 ];
+			return respoDSEContainer[ 0 ];
 		};
 
 		// Force json dataType
@@ -9744,7 +9744,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 		// Install callback
 		overwritten = window[ callbackName ];
 		window[ callbackName ] = function() {
-			responseContainer = arguments;
+			respoDSEContainer = arguments;
 		};
 
 		// Clean-up function (fires after converters)
@@ -9769,12 +9769,12 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 				oldCallbacks.push( callbackName );
 			}
 
-			// Call if it was a function and we have a response
-			if ( responseContainer && isFunction( overwritten ) ) {
-				overwritten( responseContainer[ 0 ] );
+			// Call if it was a function and we have a respoDSE
+			if ( respoDSEContainer && isFunction( overwritten ) ) {
+				overwritten( respoDSEContainer[ 0 ] );
 			}
 
-			responseContainer = overwritten = undefined;
+			respoDSEContainer = overwritten = undefined;
 		} );
 
 		// Delegate to script
@@ -9852,7 +9852,7 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
  * Load a url into a page
  */
 jQuery.fn.load = function( url, params, callback ) {
-	var selector, type, response,
+	var selector, type, respoDSE,
 		self = this,
 		off = url.indexOf( " " );
 
@@ -9884,26 +9884,26 @@ jQuery.fn.load = function( url, params, callback ) {
 			type: type || "GET",
 			dataType: "html",
 			data: params
-		} ).done( function( responseText ) {
+		} ).done( function( respoDSEText ) {
 
-			// Save response for use in complete callback
-			response = arguments;
+			// Save respoDSE for use in complete callback
+			respoDSE = arguments;
 
 			self.html( selector ?
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors
-				jQuery( "<div>" ).append( jQuery.parseHTML( responseText ) ).find( selector ) :
+				jQuery( "<div>" ).append( jQuery.parseHTML( respoDSEText ) ).find( selector ) :
 
 				// Otherwise use the full result
-				responseText );
+				respoDSEText );
 
 		// If the request succeeds, this function gets "data", "status", "jqXHR"
-		// but they are ignored because response was set above.
+		// but they are ignored because respoDSE was set above.
 		// If it fails, this function gets "jqXHR", "status", "error"
 		} ).always( callback && function( jqXHR, status ) {
 			self.each( function() {
-				callback.apply( this, response || [ jqXHR.responseText, status, jqXHR ] );
+				callback.apply( this, respoDSE || [ jqXHR.respoDSEText, status, jqXHR ] );
 			} );
 		} );
 	}
